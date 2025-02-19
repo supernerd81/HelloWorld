@@ -1,5 +1,8 @@
 package de.supernerd;
 
+import java.util.ArrayList;
+import java.util.List;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
@@ -13,5 +16,34 @@ public class Main {
             // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
             System.out.println("i = " + i);
         }
+
+        System.out.println("Hello, World!");
+
+
+        int n = 10; // Anzahl der Primzahlen, die generiert werden sollen
+        System.out.println(generateNPrimes(n));
+    }
+
+    public static List<Integer> generateNPrimes(int n) {
+        List<Integer> primes = new ArrayList<>();
+        int num = 2; // Erste zu prüfende Zahl
+
+        while (primes.size() < n) {
+            if (isPrime(num)) {
+                primes.add(num);
+            }
+            num++;
+        }
+        return primes;
+    }
+
+    private static boolean isPrime(int num) {
+        if (num < 2) return false;
+        for (int i = 2; i * i <= num; i++) { // Optimiert: Nur bis zur Wurzel von num prüfen
+            if (num % i == 0) {
+                return false;
+            }
+        }
+        return true;
     }
 }
